@@ -1,4 +1,6 @@
-// Function that takes in a non-empty array of distinct integers and an integer representing a target sum. If any two numbers in the input array sum up to the target sum, the function should return an empty array.
+// Function that takes in a non-empty array of distinct integers and an integer representing a target sum.
+// If any two numbers in the input array sum up to the target sum, the function should return them in an array.
+// If not the function should return an empty array
 
 // Assumption: There will be at least one pair of numbers that sum to yield the target sum
 

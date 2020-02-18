@@ -18,3 +18,19 @@ function twoNumberSum(array, targetSum) {
 } 
 
 
+// O(n) time | O(n) space
+
+function twoNumberSum(array, targetSum) {
+	let numbers = {};
+	for(let i = 0 ; i < array.length ; i++) {
+		let potentialMatch = targetSum - array[i];
+		if(potentialMatch in numbers){
+			return [potentialMatch , array[i]]
+		} else {
+			numbers[array[i]] = true;
+		}
+	}
+	return numbers
+
+}
+

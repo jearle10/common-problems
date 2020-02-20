@@ -1,5 +1,7 @@
-// Average O(log(n)) time | O(log(n)) space
+// Find the closest value in a Binary search tree - Assume there will only be one closest value 
 
+
+// Average O(log(n)) time | O(log(n)) space
 // Worst O(n) time | O(n) space
 
 function findClosestValueInBst(tree, target) {

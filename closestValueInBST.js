@@ -22,6 +22,28 @@ function searchTree(tree, target, closestNode){
 	} else {
 		return closestNode;
 	}
-	
+}
+
+ // Best O(log(n)) time | O(1) space 
+ // Worst O(n) time | O(1) space
+
+function findClosestValueInBst(tree, target){
+    return searchTree(tree, target, Infinity)
+}
+function searchTree(tree, target , closestNode)
+        while (tree != null){
+            if(Math.abs(target - closestNode) > Math.abs(target - tree.value)){
+                closestNode = tree.value
+            }
+            if(target < tree.value){
+                tree = tree.left
+            } else if ( target > tree.value){
+                tree = tree.right
+            } else{
+                break
+            }
+        }
+    }
+    return closestNode
 }
 

@@ -4,6 +4,8 @@
 
 // Assumption: There will be at least one pair of numbers that sum to yield the target sum
 
+
+// O(n^2) time | o(1) space
 // O(n^2) | o(1)
 
 function twoNumberSum(array, targetSum) {

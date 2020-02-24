@@ -23,6 +23,7 @@ function sum(node, currentSum, sums) {
     return;
   }
   currentSum += node.value;
+  
   if (!node.left && !node.right) {
     sums.push(currentSum);
     return;

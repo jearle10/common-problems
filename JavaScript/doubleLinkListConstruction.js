@@ -1,4 +1,3 @@
-// This is an input class. Do not edit.
 class Node {
   constructor(value) {
     this.value = value;
@@ -7,7 +6,6 @@ class Node {
   }
 }
 
-// Feel free to add new properties and methods to the class.
 class DoublyLinkedList {
   constructor() {
     this.head = null;
@@ -33,19 +31,17 @@ class DoublyLinkedList {
 
   insertBefore(node, nodeToInsert) {
     if (nodeToInsert === this.head && nodeToInsert === this.tail) {
-      // Check that the node being moved isn't the only node in the linked list
       return;
     }
-    this.remove(nodeToInsert); // Remvoe the node from it's current position
-    nodeToInsert.prev = node.prev; // Add the previous pointer to the node before
-    nodeToInsert.next = node.next; // Add the next pointer to the node after
-
+    this.remove(nodeToInsert);
+    nodeToInsert.prev = node.prev;
+    nodeToInsert.next = node;
     if (node.prev === null) {
-      // Check the previous node to see if it is null
-      this.head = nodeToInsert; // If the previous node is null then set the head of the linked list the newly inserted node
+      this.head = nodeToInsert;
     } else {
-      node.prev.next = nodeToInsert; // If the previous node is not null the point it to the newly inserted node
+      node.prev.next = nodeToInsert;
     }
+    node.prev = nodeToInsert;
   }
 
   insertAfter(node, nodeToInsert) {
@@ -54,16 +50,43 @@ class DoublyLinkedList {
     }
     this.remove(nodeToInsert);
     nodeToInsert.prev = node;
+    nodeToInsert.next = node.next;
+    if (node.next === null) {
+      this.tail = nodeToInsert;
+    } else {
+      node.next.prev = nodeToInsert;
+    }
+    node.next = nodeToInsert;
   }
 
   insertAtPosition(position, nodeToInsert) {
-    // Write your code here.
+    if (position === 1) {
+      this.setHead(nodeToInsert);
+      return;
+    }
+    let currentPosition = 1;
+    let node = this.head;
+    while (node !== null && currentPosition !== position) {
+      node = node.next;
+      currentPosition++;
+    }
+    if (node !== null) {
+      this.insertBefore(node, nodeToInsert);
+    } else {
+      this.setTail(nodeToInsert);
+    }
   }
 
   removeNodesWithValue(value) {
-    // Write your code here.
+    let node = this.head;
+    while (node !== null) {
+      const nodeToRemove = node;
+      if (nodeToRemove.value === value) {
+        this.remove(nodeToRemove);
+      }
+      node = node.next;
+    }
   }
-
   remove(node) {
     if (node === this.head) {
       this.head = this.head.next;
@@ -88,6 +111,10 @@ class DoublyLinkedList {
   }
 
   containsNodeWithValue(value) {
-    // Write your code here.
+    let node = this.head;
+    while (node !== null && node.value !== value) {
+      node = node.next;
+    }
+    return node !== null;
   }
 }

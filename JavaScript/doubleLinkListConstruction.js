@@ -81,10 +81,10 @@ class DoublyLinkedList {
     let node = this.head;
     while (node !== null) {
       const nodeToRemove = node;
+      node = node.next;
       if (nodeToRemove.value === value) {
         this.remove(nodeToRemove);
       }
-      node = node.next;
     }
   }
   remove(node) {
